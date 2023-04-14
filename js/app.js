@@ -5,9 +5,10 @@ var age = document.querySelector('[name="age"]')
 var id = document.querySelector('[name="id"]')
 var token = document.querySelector('[name="token"]')
 var loading = document.querySelector(".loading")
-var preview = document.querySelector('#preview');
-var fileInput = document.querySelector('#file-upload');
-var text = document.querySelector('.text');
+var preview = document.querySelector('#preview')
+var fileInput = document.querySelector('#file-upload')
+var text = document.querySelector('.text')
+var baseURL = "https://hardy-lip-production.up.railway.app/"
 
 var TIME_ON_SCREEN = 2000;
 
@@ -78,7 +79,7 @@ function loginAccount() {
                     loading.classList.add("hidden")
                     notify(data.message)
                 } else if (data.success) {
-                    location.href = 'http://localhost/mygram/?set_token=' + data.data["token"]
+                    location.href = baseURL + '?set_token=' + data.data["token"]
                 }
             })
             .catch(err => console.log(err))
@@ -153,7 +154,7 @@ function uploadPhoto() {
     form_data.append('photo', photo.files[0])
     form_data.append('title', title.value)
 
-    fetch("http://localhost/mygram/php/upload.php", {
+    fetch(baseURL + "php/upload.php", {
         method: "POST",
         body: form_data
     }).then(response => response.text())
