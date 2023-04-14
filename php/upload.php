@@ -1,5 +1,5 @@
 <?php
-$link = "http://localhost/mygram/photos/";
+$link = "https://hardy-lip-production.up.railway.app/";
 if (isset($_FILES['photo'])) {
     $title = $_POST['title'];
     if ($title == "") {
