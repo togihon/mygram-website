@@ -1,0 +1,551 @@
+html,
+body {
+    margin: 0;
+    font-family: 'Fredoka', sans-serif;
+    height: 100%;
+}
+
+#app {
+    margin: auto;
+    width: 30%;
+    height: 100%;
+}
+
+.header {
+    margin: 0;
+    background-color: bisque;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.header .back {
+    position: absolute;
+    left: 0;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.header .title h2 {
+    font-family: 'Lobster', cursive;
+    margin: 13px 0px 13px 20px;
+    font-size: 25px;
+    font-weight: 100;
+}
+
+.content {
+    margin-top: 2px;
+    height: 83vh;
+    overflow: auto;
+}
+
+.no-bar {
+    height: 90vh;
+}
+
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+.feed-card {
+    padding: 10px 0px;
+    margin: 15px 10px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.feed-card .user {
+    padding: 5px 0px 15px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.feed-card .user a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    margin-right: 3px;
+}
+
+.feed-card .user p {
+    font-size: 13px;
+    color: grey;
+    margin: 0;
+    padding-left: 5px;
+    flex-grow: 1;
+}
+
+.feed-card .user button {
+    margin-right: 20px;
+    border-radius: 50%;
+    padding: 2px 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: rgba(221, 1, 1, 0.65);
+    color: white;
+}
+
+.feed-card .image {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.feed-card .image img {
+    aspect-ratio: 16/9;
+    width: 100%;
+}
+
+.feed-card .title {
+    background-color: rgb(31, 33, 33, .65);
+    color: white;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+
+}
+
+.feed-card .title p {
+    padding: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 5px;
+}
+
+.detail {
+    padding: 10px 20px 0px 20px;
+}
+
+.detail .caption {
+    font-size: 14px;
+}
+
+.detail .comment p {
+    font-size: 13px;
+    color: grey;
+    cursor: pointer;
+    margin: 10px 0px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.detail .comment .comment-card {
+    margin: 0;
+    font-size: 14px;
+    padding: 0px 0px 7px 0px;
+}
+
+.detail .comment .comment-card a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.detail .comment .add-comment {
+    display: flex;
+    margin: 15px 0px;
+}
+
+.detail .comment .add-comment textarea {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid blue;
+    margin-right: 10px;
+    font-size: 14px;
+    resize: none;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.detail .comment .add-comment button {
+    background: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Fredoka', sans-serif;
+    color: blue;
+}
+
+/* MENU BAR */
+.menu-bar {
+    min-height: 53px;
+    background-color: bisque;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+.menu-bar .btn {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    margin: 0px 45px;
+    background-color: unset !important;
+}
+
+/* PROFILE */
+
+.profile {
+    padding: 10px 0px;
+    margin: 15px 10px;
+}
+
+.profile .card {
+    display: flex;
+}
+
+.profile .card img {
+    width: 50px;
+    height: 115px;
+    flex-grow: 1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile .card .detail {
+    width: 36vh;
+}
+
+.profile .card .detail b {
+    margin: 0;
+    font-size: 20px;
+}
+
+.profile .card .detail i {
+    margin: 0;
+    font-size: 13px;
+}
+
+.profile .card .detail .email {
+    margin: 0;
+    font-size: 15px;
+    color: #5F81B6;
+}
+
+.profile .card .detail button {
+    margin-top: 20px;
+    font-size: 15px;
+    background-color: #FFE4C4;
+    outline: none;
+    border: none;
+    padding: 5px;
+    width: 100%;
+    font-family: 'Fredoka', sans-serif;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+/* SNACKBAR */
+.notify {
+    border-radius: 5px;
+    width: 250px;
+    position: fixed;
+    left: 50%;
+    font-size: 13px;
+    padding: 15px 20px;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+    text-transform: capitalize;
+    transform: translate(-50%, -50%);
+    transition: 500ms ease-in-out;
+}
+
+.notify-active {
+    background: #272725;
+    color: #dfdfdf;
+}
+
+/* BACKGROUND */
+
+.loading,
+.pop-up {
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .2);
+    z-index: 9998;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+
+/* POPUP */
+.modal {
+    background-color: white;
+    z-index: 9999;
+    border-radius: 20px;
+}
+
+.modal h3 {
+    margin: 0;
+    padding: 25px 25px 10px 25px;
+}
+
+.modal .select {
+    display: flex;
+    padding: 5px 15px 15px 15px;
+}
+
+.modal .select button {
+    flex-grow: 1;
+    margin: 5px;
+    padding: 10px 5px;
+    background-color: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+    font-family: 'Fredoka', sans-serif;
+    color: white;
+}
+
+.yes {
+    background-color: #3085D6;
+}
+
+.yes:hover {
+    background-color: #2180d8;
+}
+
+.no {
+    background-color: #DD3333;
+}
+
+.no:hover {
+    background-color: #dd2727;
+}
+
+/* LOADING */
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* UPLOAD PHOTO*/
+
+.upload-photo {
+    padding: 10px 0px;
+    margin: 15px 10px;
+}
+
+.upload-photo .form {
+    display: flex;
+    justify-content: center;
+    align-items: self-start;
+    flex-direction: column;
+}
+
+.upload-photo .form .result {
+    border: 2px solid #EEEEEE;
+    width: 100%;
+    cursor: pointer;
+}
+
+.upload-photo .form .result img {
+    aspect-ratio: 16/9;
+    width: 100%;
+    background-size: cover;
+}
+
+.upload-photo .form .result .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 37px;
+    color: #5F81B6;
+}
+
+.upload-photo .form .result .text i {
+    color: #5F6982;
+    font-size: 55pt;
+}
+
+.upload-photo .form input,
+.upload-photo .form textarea {
+    padding: 10px 20px;
+    border-radius: 3px;
+    margin-top: 10px;
+    font-size: 15px;
+    resize: none;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #00A8CC;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.upload-photo .form button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #00a8cc;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+    font-family: 'Fredoka', sans-serif;
+}
+
+
+.file-input {
+    display: none;
+}
+
+
+.btn:hover {
+    background-color: #007d9a;
+}
+
+/* AUTH PAGE */
+
+.auth-page {
+    background-color: #FFE4C4;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.auth-page h2 {
+    margin-bottom: 50px;
+    font-family: 'Lobster', cursive;
+    font-size: 45px;
+    font-weight: 100;
+}
+
+.auth-page .auth-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+}
+
+.auth-page .auth-field input {
+    font-size: 11pt;
+    padding: 10px 20px;
+    outline: none;
+    border-radius: 3px;
+    border: none;
+    width: 100%;
+    margin: 3px 0px;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.auth-page button {
+    padding: 10px 20px;
+    outline: none;
+    border-radius: 3px;
+    border: none;
+    margin: 15px 0px;
+    width: 60%;
+    cursor: pointer;
+    background-color: #0097FE;
+    color: white;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 11pt;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.auth-footer {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11pt;
+    bottom: 0;
+    color: black;
+}
+
+.auth-footer a {
+    text-decoration: none;
+    margin: 25px 5px;
+    color: black;
+    font-weight: 600;
+}
+
+
+@media (300px < width < 500px) {
+    #app {
+        width: 100%;
+        margin: 0;
+    }
+
+    .loading {
+        width: 100%;
+    }
+
+    .content {
+        height: 83.2vh;
+        overflow: auto;
+    }
+
+    .no-bar {
+        height: 90vh;
+    }
+
+    .profile .card .detail {
+        width: 30vh;
+    }
+
+}

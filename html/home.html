@@ -1,0 +1,76 @@
+<div id="app">
+    <div class="header">
+        <div class="title">
+            <h2>MyGram~</h2>
+        </div>
+    </div>
+    <div class="content">
+        <input type="text" name="token" value="<?php echo $token; ?>" hidden>
+        <input type="text" name="username" value="<?php echo $data->username; ?>" hidden>
+        <?php
+        for ($i = 0; $i < count($photos); $i++) {  ?>
+        <div class="feed-card">
+            <div class="user">
+                <a href="">
+                    <?php echo ucwords($photos[$i]->username); ?>
+                </a>
+                &bull;
+                <p>
+                    <?php
+                        $date = DateTime::createFromFormat('Y-m-d\TH:i:s.u\Z', $photos[$i]->created_at);
+                        echo $date->format('Y-m-d H:i');
+                        ?>
+                </p>
+            </div>
+            <div class="image">
+                <img src="<?php echo $photos[$i]->photo_url; ?>" alt="" srcset="">
+                <div class="title">
+                    <p>
+                        <?php echo $photos[$i]->title; ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="detail">
+                <div class="caption">
+                    <?php echo $photos[$i]->caption; ?>
+                </div>
+                <div class="comment">
+                    <?php $count_comment = count($photos[$i]->comment); echo '<p onclick="return toogleComment(' . $photos[$i]->id . ')">lihat komentar ('.$count_comment.')</p>'; ?>
+                    <div id="comment-section-<?php echo $photos[$i]->id; ?>" hidden>
+                        <?php
+                            if ($count_comment == 0) {
+                                echo "";
+                            } else {
+                                for ($j = 0; $j < $count_comment; $j++) {
+                                    echo '<div id="comment" class="comment-card">
+                            <a href="">' . $photos[$i]->comment[$j]->username . '</a>' . $photos[$i]->comment[$j]->message . '
+                        </div> ';
+                                }
+                            };
+                            ?>
+
+                        <div id="add-comment-<?php echo $photos[$i]->id; ?>" class="add-comment">
+                            <textarea name="message-<?php echo $photos[$i]->id; ?>" rows="2" cols="50"
+                                placeholder="Tambahkan komentar baru..."></textarea>
+                            <?php echo '<button onclick="return addComment(' . $photos[$i]->id . ')">KIRIM</button>'; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+        }
+        ?>
+    </div>
+    <div class="menu-bar">
+        <div class="btn" onclick="location.href='/mygram/upload'">
+            <i class="fas fa-upload"></i>
+            Upload
+        </div>
+        <div class="btn" onclick="location.href='/mygram/profile'">
+            <i class="fas fa-user"></i>
+            Profile
+        </div>
+    </div>
+</div>

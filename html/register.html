@@ -1,0 +1,22 @@
+<div id="app">
+    <div class="loading hidden">
+        <div class="lds-dual-ring">
+            <div></div>
+        </div>
+    </div>
+    <div class="auth-page">
+        <h2>MyGram~</h2>
+        <div class="auth-field">
+            <input type="email" placeholder="Email" name="email" class="input-field" autofocus>
+            <input type="text" placeholder="Username" name="username" class="input-field">
+            <input type="password" placeholder="Password" name="password" class="input-field">
+            <input pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;" type="number"
+                placeholder="Age" name="age" class="input-field">
+        </div>
+        <button onclick="return registerAccount()"> Register</button>
+
+        <div class="auth-footer">
+            Sudah punya akun? <a href="/mygram/login">Yuk Login!</a>
+        </div>
+    </div>
+</div>

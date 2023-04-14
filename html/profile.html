@@ -1,0 +1,110 @@
+<div id="app">
+    <div class="loading hidden">
+        <div class="lds-dual-ring">
+            <div></div>
+        </div>
+    </div>
+    <div class="pop-up hidden">
+        <div class="modal">
+            <h3>Anda yakin ingin menghapus photo? </h3>
+            <div id="text-modal"></div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="back" onclick="location.href='/mygram'">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="title">
+            <h2>MyGram~</h2>
+        </div>
+    </div>
+    <div class="content no-bar">
+        <div class="profile">
+            <div class="card">
+                <img src="https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=<?php echo $data->email; ?>@mygram">
+                <div class="detail">
+                    <b>
+                        <?php echo ucwords($data->username); ?>
+                    </b><i> - Joined since
+                        <?php $date = DateTime::createFromFormat('Y-m-d\TH:i:s.u\Z', $data->created_at);
+                        echo $date->format('Y'); ?>
+                    </i>
+                    <p class="email"><i class="fas fa-envelope"></i>
+                        <?php echo $data->email; ?>
+                    </p>
+                    <button onclick="location.href='/mygram/logout'">Log out</button>
+                </div>
+            </div>
+        </div>
+        <input type="text" name="token" value="<?php echo $token; ?>" hidden>
+        <?php
+        $checkArray = array();
+        for ($i = 0; $i < count($photos); $i++) {
+            if ($photos[$i]->id_user == $data->id) {
+                array_push($checkArray, $photos[$i]);
+        ?>
+        <div class="feed-card">
+            <div class="user">
+                <a href="">
+                    <?php echo $photos[$i]->username; ?>
+                </a>
+                &bull;
+                <p>
+                    <?php
+                            $date = DateTime::createFromFormat('Y-m-d\TH:i:s.u\Z', $photos[$i]->created_at);
+                            echo $date->format('Y-m-d H:i');
+                            ?>
+                </p>
+                <?php if ($photos[$i]->id_user == $data->id) {
+                            $id = $photos[$i]->id;
+                            echo '<button onclick="return showModal(' . $id . ');">X</button>';
+                        }
+                        ?>
+            </div>
+            <div class="image">
+                <img src="<?php echo $photos[$i]->photo_url; ?>" alt="" srcset="">
+                <div class="title">
+                    <p>
+                        <?php echo $photos[$i]->title; ?>
+                    </p>
+                </div>
+            </div>
+
+            <div class="detail">
+                <div class="caption">
+                    <?php echo $photos[$i]->caption; ?>
+                </div>
+                <div class="comment">
+                    <?php $count_comment = count($photos[$i]->comment);
+                            echo '<p onclick="return toogleComment(' . $photos[$i]->id . ')">lihat komentar (' . $count_comment . ')</p>'; ?>
+                    <div id="comment-section-<?php echo $photos[$i]->id; ?>" hidden>
+                        <?php
+                                if ($count_comment == 0) {
+                                    echo "";
+                                } else {
+                                    for ($j = 0; $j < $count_comment; $j++) {
+                                        echo '<div id="comment" class="comment-card">
+                            <a href="">' . $photos[$i]->comment[$j]->username . '</a>' . $photos[$i]->comment[$j]->message . '
+                        </div> ';
+                                    }
+                                };
+                                ?>
+
+                        <div id="add-comment--<?php echo $photos[$i]->id; ?>" class="add-comment">
+                            <textarea name="message-<?php echo $photos[$i]->id; ?>" rows="2" cols="50"
+                                placeholder="Tambahkan komentar baru..."></textarea>
+                            <?php echo '<button onclick="return addComment(' . $photos[$i]->id . ')">KIRIM</button>'; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+            }
+            if (count($checkArray) == 0) {
+                echo "Tidak ada photo";
+            }
+        }
+        ?>
+    </div>
+</div>
